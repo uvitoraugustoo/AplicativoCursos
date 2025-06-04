@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="telefone">Telefone</string>
+    <string name="aplicativo_de_cursos">Aplicativo de Cursos</string>
+    <string name="nome">Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="curso_desejado">Curso desejado</string>
+</resources>

@@ -2,6 +2,7 @@ package com.vitoraugusto.myapplication.View;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,10 @@ PessoaController pessoaController;
     Pessoa pessoa;
     Curso curso;
 
+SharedPreferences sharedPreferences;
+
+public static final String NOMES_PREFERENCES = "usuarios";
+
 
 
     @Override
@@ -50,6 +55,10 @@ PessoaController pessoaController;
         sobrenome = findViewById(R.id.sobrenome);
         nomeCurso = findViewById(R.id.nomeDoCurso);
         telefoneDeContato = findViewById(R.id.TelefoneDeContato);
+
+        sharedPreferences = getSharedPreferences(NOMES_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = sharedPreferences.edit();
+
 
         limpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +89,15 @@ PessoaController pessoaController;
 
                 pessoaController = new PessoaController();
                 pessoaController.salvar(pessoa);
+
+                listaVip.putString("Nome : ", pessoa.getPrimeiroNome());
+                listaVip.putString("Sobrenome: ", pessoa.getSobrenome());
+                listaVip.putString("Curso: ", pessoa.getCurso());
+                listaVip.putString("Telefone Contato", pessoa.getTelefoneContato());
+                listaVip.apply();
+
+
+
                 Toast.makeText(MainActivity.this, "Dados Salvos", Toast.LENGTH_SHORT).show();
                 primeiroNome.setText("");
                 sobrenome.setText("");

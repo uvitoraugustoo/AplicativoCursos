@@ -1,27 +1,28 @@
 package com.vitoraugusto.myapplication.Controller;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.vitoraugusto.myapplication.Model.Curso;
 
 
 public class CursoController {
-   Curso curso;
+    private static final String NOMES_PREFERENCES = "usuarios";
+    private final SharedPreferences sharedPreferences;
 
-
-    @NonNull
-    public String toString(){
-        Log.d("MVC Controller ", "Controller Iniciado...");
-        return super.toString();
+    public CursoController(Context context) {
+        this.sharedPreferences = context.getSharedPreferences(NOMES_PREFERENCES, Context.MODE_PRIVATE);
     }
 
-
-    public void salvar(Curso curso){
-        Log.d("MVC_Controller", "Salvo: \n"+ curso.toString());
+    public void salvarCurso(Curso curso) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("nomeDoCurso", curso.getNomeDoCurso());
+        editor.apply();
     }
-
+public Curso carregarCurso(){
+        String nomeDoCurso = sharedPreferences.getString("nomeDoCurso", "");
+        return new Curso(nomeDoCurso);
+}
 
 }
 

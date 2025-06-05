@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.vitoraugusto.myapplication.Controller.CursoController;
 import com.vitoraugusto.myapplication.Controller.PessoaController;
 import com.vitoraugusto.myapplication.Model.Curso;
 import com.vitoraugusto.myapplication.Model.Pessoa;
@@ -22,18 +23,13 @@ import com.vitoraugusto.myapplication.R;
 
 
 public class MainActivity extends AppCompatActivity {
-    Context context;
+    Context context = this;
 
     private Button limpar, salvar, finalizar;
     private EditText primeiroNome, sobrenome, nomeCurso, telefoneDeContato;
-PessoaController pessoaController;
+    PessoaController pessoaController;
     Pessoa pessoa;
     Curso curso;
-
-SharedPreferences sharedPreferences;
-
-public static final String NOMES_PREFERENCES = "usuarios";
-
 
 
     @Override
@@ -44,6 +40,8 @@ public static final String NOMES_PREFERENCES = "usuarios";
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+
+        pessoaController = new PessoaController(this);
 
         pessoa = new Pessoa();
 
@@ -56,60 +54,54 @@ public static final String NOMES_PREFERENCES = "usuarios";
         nomeCurso = findViewById(R.id.nomeDoCurso);
         telefoneDeContato = findViewById(R.id.TelefoneDeContato);
 
-        sharedPreferences = getSharedPreferences(NOMES_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = sharedPreferences.edit();
 
+        limpar.setOnClickListener(v ->
+        {
+            primeiroNome.setText("");
+            sobrenome.setText("");
+            nomeCurso.setText("");
+            telefoneDeContato.setText("");
+            pessoaController.deleterPessoa();
 
-        limpar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                primeiroNome.setText("");
-                sobrenome.setText("");
-                nomeCurso.setText("");
-                telefoneDeContato.setText("");
-            }
         });
 
 
-        finalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        finalizar.setOnClickListener(v -> {
+            {
                 finish();
             }
         });
-        salvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pessoa = new Pessoa(
-                        String.valueOf(primeiroNome.getText()),
-                        String.valueOf(sobrenome.getText()),
-                        String.valueOf(nomeCurso.getText()),
-                        String.valueOf(telefoneDeContato.getText()));
+        salvar.setOnClickListener(v -> {
+            {
+                Pessoa pessoa = new Pessoa(
+                        primeiroNome.getText().toString(),
+                        sobrenome.getText().toString(),
+                        nomeCurso.getText().toString(),
+                        telefoneDeContato.getText().toString()
+                );
 
-
-                pessoaController = new PessoaController();
-                pessoaController.salvar(pessoa);
-
-                listaVip.putString("Nome : ", pessoa.getPrimeiroNome());
-                listaVip.putString("Sobrenome: ", pessoa.getSobrenome());
-                listaVip.putString("Curso: ", pessoa.getCurso());
-                listaVip.putString("Telefone Contato", pessoa.getTelefoneContato());
-                listaVip.apply();
+                pessoaController.salvarPessoa(pessoa);
 
 
 
                 Toast.makeText(MainActivity.this, "Dados Salvos", Toast.LENGTH_SHORT).show();
-                primeiroNome.setText("");
-                sobrenome.setText("");
-                nomeCurso.setText("");
-                telefoneDeContato.setText("");
 
             }
         });
+        carregarPessoaSalva();
     }
 
+    public void carregarPessoaSalva() {
+        Pessoa pessoa1 = pessoaController.carregarPessoa();
 
+        primeiroNome.setText(pessoa1.getPrimeiroNome());
+        sobrenome.setText(pessoa1.getSobrenome());
+        nomeCurso.setText(pessoa1.getNomeDoCurso());
+        telefoneDeContato.setText(pessoa1.getTelefoneContato());
+
+    }
 }
+
 
 
 

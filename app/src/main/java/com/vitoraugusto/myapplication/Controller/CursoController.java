@@ -10,20 +10,25 @@ public class CursoController {
     private static final String NOMES_PREFERENCES = "usuarios";
     private final SharedPreferences sharedPreferences;
 
+
     public CursoController(Context context) {
         this.sharedPreferences = context.getSharedPreferences(NOMES_PREFERENCES, Context.MODE_PRIVATE);
     }
 
-    public void salvarCurso(Curso curso) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("nomeDoCurso", curso.getNomeDoCurso());
-        editor.apply();
-    }
-public Curso carregarCurso(){
-        String nomeDoCurso = sharedPreferences.getString("nomeDoCurso", "");
-        return new Curso(nomeDoCurso);
-}
 
+    public void salvarPosicao(int posicao){
+        SharedPreferences.Editor listavip = sharedPreferences.edit();
+        listavip.putInt("posicao", posicao);
+        listavip.apply();
+    }
+
+
+
+public int carregarCurso(){
+        int posicao = 0;
+        posicao =  sharedPreferences.getInt("posicao", 0);
+        return posicao;
+}
 }
 
 

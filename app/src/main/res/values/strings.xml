@@ -5,4 +5,16 @@
     <string name="nome">Nome</string>
     <string name="sobrenome">Sobrenome</string>
     <string name="curso_desejado">Curso desejado</string>
+    <string name="salvar">Salvar</string>
+    <string name="finalizar">Finalizar</string>
+
+    <string-array name="planets_array">
+            <item>Selecione um Curso</item>
+            <item>Tecnico em Desenvolvimento de Sistemas</item>
+            <item>Tecnico em Informática</item>
+            <item>Estética</item>
+            <item>Aprendizagem</item>
+            <item>Enfermagem</item>
+
+        </string-array>
 </resources>

@@ -13,7 +13,7 @@ import com.vitoraugusto.myapplication.Model.Pessoa;
 public class PessoaController {
 
 
-
+int posicao = 0;
     SharedPreferences sharedPreferences;
     public static final String NOMES_PREFERENCES = "usuarios";
 

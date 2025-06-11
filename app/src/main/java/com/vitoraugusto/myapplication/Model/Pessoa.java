@@ -11,11 +11,7 @@ public class Pessoa {
 
     private String primeiroNome;
     private String sobrenome;
-
 private String nomeDoCurso;
-
-
-
     private String telefoneContato;
 
 
@@ -50,6 +46,7 @@ this.nomeDoCurso = nomeDoCurso;
     public String toString(){
         return "Primeiro Nome: "+ getPrimeiroNome() +"\n"
                 +"Sobrenome: "+ getSobrenome() + "\n"+
+
                 "Telefone para contato: "+ getTelefoneContato();
     }
 

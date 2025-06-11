@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.vitoraugusto.myapplication.Controller.CursoController;
+import com.vitoraugusto.myapplication.Controller.DbController;
 import com.vitoraugusto.myapplication.Controller.PessoaController;
 import com.vitoraugusto.myapplication.Model.Curso;
 import com.vitoraugusto.myapplication.Model.Pessoa;
@@ -88,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
         });
         salvar.setOnClickListener(v -> {
             {
+
+                DbController dbController = new DbController(this);
+                String resultado;
+
                 Pessoa pessoa = new Pessoa(
                         primeiroNome.getText().toString(),
                         sobrenome.getText().toString(),
@@ -96,15 +101,18 @@ public class MainActivity extends AppCompatActivity {
                 );
 
 
-                pessoaController.salvarPessoa(pessoa);
 
+                pessoaController.salvarPessoa(pessoa);
+                resultado = dbController.insertData(pessoa.getPrimeiroNome(), pessoa.getSobrenome(), pessoa.getNomeDoCurso(), pessoa.getTelefoneContato());
                 posicao = nomeDoCurso.getSelectedItemPosition();
                 cursoController = new CursoController(this);
 
                 cursoController.salvarPosicao(posicao);
                 Toast.makeText(MainActivity.this, "Dados Salvos", Toast.LENGTH_SHORT).show();
             }
+
         });
+
         carregarPessoaSalva();
     }
 

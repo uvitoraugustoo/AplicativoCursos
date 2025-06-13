@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5EDF5"
+    android:gravity="center_horizontal"
+    tools:context=".View.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aplicativo_de_cursos"
+                android:textSize="16sp"
+                android:layout_marginBottom="32dp" />
+
+            <EditText
+                android:id="@+id/primeiroNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nome"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp"/>
+
+
+            <EditText
+                android:id="@+id/sobrenome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sobrenome"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp"/>
+
+            <Spinner
+                android:id="@+id/nomeDoCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+
+            <EditText
+                android:id="@+id/TelefoneDeContato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/telefone"
+                android:inputType="phone"
+                android:layout_marginBottom="32dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/limpar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="LIMPAR" />
+
+                <Button
+                    android:id="@+id/salvar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/salvar" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/finalizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/finalizar" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

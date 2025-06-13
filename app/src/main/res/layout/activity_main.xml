@@ -5,24 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    tools:context=".View.MainActivity"
+    android:background="@color/white"
+    >
 
     <Button
         android:id="@+id/limpar"
-        style="@style/Widget.AppCompat.Button.Colored"
+
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:background="@color/black"
-        android:backgroundTint="@color/black"
+        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
+        android:backgroundTintMode="src_atop"
         android:scrollbarStyle="outsideInset"
         android:text="Limpar"
-        app:layout_constraintBottom_toTopOf="@+id/finalizar"
-        app:layout_constraintEnd_toStartOf="@+id/salvar"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.908" />
+        app:layout_constraintVertical_bias="0.778" />
 
     <EditText
         android:id="@+id/sobrenome"
@@ -88,6 +91,7 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:scrollbarStyle="outsideInset"
         android:text="@string/finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,17 +104,16 @@
     <Button
         android:id="@+id/salvar"
         style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_width="105dp"
+        android:layout_height="59dp"
         android:scrollbarStyle="outsideInset"
         android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toEndOf="@+id/finalizar"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768" />
+        app:layout_constraintVertical_bias="0.791" />
 
     <Spinner
         android:id="@+id/nomeDoCurso"

@@ -38,10 +38,7 @@ int posicao = 0;
         String nomeDoCurso = sharedPreferences.getString("curso", "");
         String telefone = sharedPreferences.getString("telefone", "");
         return new Pessoa(primeiroNome, sobrenome, nomeDoCurso,telefone);
-
-
     }
-
 
     @NonNull
     public String toString() {
